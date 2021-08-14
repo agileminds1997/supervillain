@@ -1,0 +1,25 @@
+doctype html
+include ../includes/vars.pug
+include ../includes/head.pug
+
+div.sign-up-form
+ div.left
+  img(src= formData.defaults.poster, alt="Poster")
+ div.right
+  div.title
+   h1 Do the JSON submission
+   h2 Will You Build the ToolChain?
+  form#input-form.input-form(method="post",action="https://erikjclark.co.uk/rec.php")
+   label(for="name") Name
+   input.input-field#name(type="text",name="name",placeholder= formData.defaults.name)
+   label(for="phone") Phone Number
+   input.input-field#phone(type="tel",name="phone",placeholder= formData.defaults.phone)
+   label(for="email") Email Address
+   input.input-field#email(type="tel",name="email",placeholder= formData.defaults.email)
+   label(for="country") Country
+   select.country-select#country(name="country")
+    each country,code in formData.countries
+     option(value= code)= country
+  button.button#go= formData.defaults.cta
+
+include ../includes/footer.pug
