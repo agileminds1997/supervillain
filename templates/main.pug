@@ -1,0 +1,49 @@
+- var navlinks = {"about":"#about","faq":"#qna","fares":"#fares","zones":"#zone","login":"/login"}
+- var languages = {"en":"english","fr":"francais","de":"deutsch","pt":"portugues"}
+doctype html
+html(lang='en')
+  head
+    include ../includes/header.pug
+
+    // Main CSS file
+    link(rel='stylesheet' href='/css/main.css')
+
+  body
+
+    header.top-bar
+      .top-bar__spacer
+        .top-bar__bar
+          .top-bar__container
+            .top-bar__logo
+              a(href='/#join')
+                img.logo(src='/img/logo.svg' alt='Logo')
+            nav.nav-horizontal.hidden-xs.hidden-sm
+              each url,title in navlinks
+                a.nav-horizontal__link(href= url)= title
+            .dropdown.top-bar__language
+              span.dropdown__label.btn EN
+              .dropdown__inner
+                nav.dropdown__nav
+                  each language, isocode in languages
+                    a.dropdown__link(href=''+isocode)= language
+              .dropdown__overlay
+            .top-bar__hamburger.visible-xs-block.visible-sm-block
+              .hamburger-nav
+                .hamburger-nav__trigger
+                  .hamburger-nav__icon
+                .hamburger-nav__overlay
+                .hamburger-nav__wrapper
+                  nav.hamburger-nav__menu
+                    each url,title in navlinks
+                      a.hamburger-nav__link(href="'#"+url+"'")= title
+
+    .footer
+      .footer__container
+        .footer__copyright Copyright 1975 - 2021
+        nav.nav-horizontal.nav-horizontal--light
+          a.nav-horizontal__link(href='/imprint') Imprint
+          a.nav-horizontal__link(href='/privacy-policy') Privacy Policy
+
+      // Main JS file
+      script(type='text/javascript' src='/js/index.js')
+
